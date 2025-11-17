@@ -16,7 +16,7 @@ const tomate = 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6bbEBXfG_g6
 const ProductosDestacados = () => {
     return (
         <ContenedorSeccion variante='seccion'>
-            <Titulo variante='seccion'>Productos Destacados</Titulo>
+            <Titulo variante='seccion' style={{marginBottom : 40}}>Productos Destacados</Titulo>
             <div style={contenedorProductosStyle}>
                 <CardProductoDestacado imagenSrc={tomate} nombreProducto='Tomates limachinos' precioProducto='$1.990 / kg'/>
                 <CardProductoDestacado imagenSrc={tomate} nombreProducto='Tomates limachinos' precioProducto='$1.990 / kg'/>

@@ -14,7 +14,6 @@ const baseStyle : React.CSSProperties = {
     fontSize : '1.1rem',
     padding : '12px 25px',
     borderRadius : '8px',
-    fontWeight : 'bold',
     letterSpacing : '0.015em',
     cursor : 'pointer',
     color : '#FFFFFF',

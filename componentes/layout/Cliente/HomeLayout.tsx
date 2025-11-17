@@ -4,7 +4,6 @@ import ProductosDestacados from "componentes/organismo/Home/ProductosDestacados"
 import Informativa from "componentes/organismo/Home/Informativa"
 
 const ImgBgHero = "assets/home/banner-home.jpg"
-const ImgBGHeroNosotros = "assets/home/banner-nosotros.jpg"
 
 const HomeLayout = () => {
     return (
@@ -15,14 +14,6 @@ const HomeLayout = () => {
                 backgroundImage={ImgBgHero}
                 mostrarBotones={true}
             />
-
-            <Hero
-                titulo="Nuestra historia: Del campo a tu Hogar"
-                subtitulo="Conectamos a las familias chilenas con la frescura y autenticidad de los productos de nuestros agricultores locales"
-                backgroundImage={ImgBGHeroNosotros}
-            />
-
-
             <ProductosDestacados/>
             <Informativa/>
         </ClienteLayout>

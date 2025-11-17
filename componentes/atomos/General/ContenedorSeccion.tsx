@@ -1,10 +1,10 @@
-import Informativa from "componentes/organismo/Home/Informativa";
-
 interface Props {
     style? : React.CSSProperties;
     children: React.ReactNode;
     backgroundImage? : string;
     variante : 'banner' | 'seccion';
+    align? : "center" | "start" | "end";
+
 }   
 
 const baseStyle : React.CSSProperties = {
@@ -52,13 +52,12 @@ const contenidoStlye : React.CSSProperties = {
     height : '100%',
     display : 'flex',
     flexDirection : 'column',
-    alignItems : 'center',
     justifyContent : 'center',
     padding : '0 24px',
 }
 
 
-const ContenedorSeccion = ({ style, children, backgroundImage, variante } : Props) => {
+const ContenedorSeccion = ({ style, children, backgroundImage, variante, align = 'center' } : Props) => {
 
     const styleFinal = {
         ...baseStyle,
@@ -66,7 +65,9 @@ const ContenedorSeccion = ({ style, children, backgroundImage, variante } : Prop
         ...(backgroundImage && variante === "banner"
             ? { backgroundImage: `url(${backgroundImage})` }
             : {}),        
-        ...style
+        ...style,
+        alignItems: align === "center" ? "center" : align === "start" ? "flex-start" : "flex-end",
+        textAlign: align
         
     }
 
@@ -74,7 +75,11 @@ const ContenedorSeccion = ({ style, children, backgroundImage, variante } : Prop
         <div style={styleFinal}>
             {variante === "banner" && <div style={overlayStyle}></div>}
 
-            <div style={contenidoStlye}>
+            <div style={{
+                ...contenidoStlye,
+                alignItems: align === "center" ? "center" : align === "start" ? "flex-start" : "flex-end",
+                textAlign: align
+            }}>
                 {children}
             </div>
 

@@ -6,4 +6,6 @@ export default [
     route("nosotros", "routes/nosotros.tsx"),
     route("blogs", "routes/blogs.tsx"),
     route("contacto", "routes/contacto.tsx"),
+    route("carrito", "routes/carrito.tsx"),
+    route("detalle_producto/:id", "routes/detalle_producto.tsx"),
 ] satisfies RouteConfig;

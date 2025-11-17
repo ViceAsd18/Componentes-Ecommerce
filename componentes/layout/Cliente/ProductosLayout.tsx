@@ -1,9 +1,10 @@
 import ClienteLayout from "./ClienteLayout"
+import CatalogoProductos from "componentes/organismo/Productos/CatalogoProductos"
 
 const ProductosLayout = () => {
     return (
         <ClienteLayout>
-            <div>Productos Layout</div>              
+            <CatalogoProductos/>
         </ClienteLayout>
     )
 }
