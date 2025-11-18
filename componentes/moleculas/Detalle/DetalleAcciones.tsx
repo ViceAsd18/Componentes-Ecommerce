@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CantidadSelector from "componentes/atomos/DetalleProducto/CantidadSelector";
 import Boton from "componentes/atomos/General/Boton";
-import { Space, Typography } from "antd";
+import { Typography } from "antd";
 
 const { Text } = Typography;
 

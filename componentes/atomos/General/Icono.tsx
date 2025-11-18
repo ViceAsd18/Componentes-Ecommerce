@@ -1,4 +1,3 @@
-import type { IconBaseProps } from "@ant-design/icons/lib/components/Icon";
 import React from "react";
 import { Tooltip } from "antd";
 

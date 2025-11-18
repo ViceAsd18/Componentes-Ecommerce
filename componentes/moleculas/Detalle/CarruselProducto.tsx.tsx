@@ -1,6 +1,5 @@
-import { Carousel, Image } from "antd"
+import {  Image } from "antd"
 import MiniImagen from "componentes/atomos/DetalleProducto/MiniImagen"
-import { useRef } from "react"
 import { useState } from "react"
 
 interface Props {
@@ -11,48 +10,48 @@ const contenedorStyle : React.CSSProperties = {
     display : 'flex',
     flexDirection : 'column',
     gap : 16,
-    maxWidth : '100%',
-    height : '100%',
-    overflow : 'hidden'
+    maxWidth : 800,
+    height : 700,
+    overflow : 'hidden',
+
 }
 
-const styleCarrusel : React.CSSProperties = {
-    borderRadius : 12,
-    overflow : 'hidden',
-    width : '100%',
-    height : 500,
-    border : '2px solid red'
+const imagenStyle : React.CSSProperties = {
+    display : 'flex',
+    gap : 12,
+    justifyContent : 'start',
+    overflow : 'auto',
+    //minHeight : 100,
+    height : '80%'
+}
+
+const contenedorMiniaturas : React.CSSProperties = {
+    display : 'flex',
+    gap : 12,
+    justifyContent : 'start',
+    overflow : 'auto',
+    height : '20%'
 }
 
 const CarruselProducto = ({imagenes} : Props) => {
     
-    const CarruselRef = useRef<any>(null);
     const [actual, setActual] = useState(0);
 
     const handleMiniClick = (index : number) => {
-        CarruselRef.current.goTo(index);
         setActual(index);
     }
 
     return (
         <div style={contenedorStyle}>
-            <Carousel
-                ref={CarruselRef}
-                afterChange={(current) => setActual(current)}
-                style={styleCarrusel}
-            >
+                <Image
+                    src={imagenes[actual]}
+                    preview={false}
+                    style={imagenStyle}
+                >
+                </Image>
 
-                {imagenes.map(img => (
-                    <Image 
-                        key={img}
-                        src={img}   
-                        preview={false}
-                        style={{width : '100%', height : '100%', objectFit : 'cover', borderRadius : 12}}                    
-                    />
-                ))}
-            </Carousel>
 
-            <div style={{display : 'flex', gap : 16, justifyContent : 'start', width : '100%'}}>
+            <div style={contenedorMiniaturas}>
                 {imagenes.map((img, index) => (
                     <MiniImagen
                         key={img}

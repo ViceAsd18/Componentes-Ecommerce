@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Layout, Row, Col, Drawer } from "antd"
+import { Layout, Row, Col } from "antd"
 
 import ButtonGrupoLinks from "componentes/moleculas/BarraNavegacion/BotonGrupoLinks"
 import CarritoIcono from "componentes/atomos/BarraNavegacion/CarritoIcono"
