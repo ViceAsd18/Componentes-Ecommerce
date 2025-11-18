@@ -1,11 +1,13 @@
 import { Button } from "antd";
 import { useNavigate } from "react-router";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+
 
 interface Props {
     children : React.ReactNode;
     onClick? : () => void;
     to? : string;
-    variante? : 'primario' | 'secundario';
+    variante? : 'primario' | 'secundario' | 'carrito';
     style? : React.CSSProperties;
 }
 
@@ -29,6 +31,18 @@ const variantes : Record<string, React.CSSProperties> = {
     secundario : {
         backgroundColor : 'transparent',
         border : '1px solid #FFFFFF',        
+    },
+
+    carrito : {
+        backgroundColor : '#2E8B57',
+        border : 'none',
+        display : 'flex',
+        alignItems : 'center',
+        gap : 8,
+        fontSize : '1rem',
+        padding : '10px 20px',
+        color : '#FFFFFF',
+        width : '100%',
     }
 }
 
@@ -48,6 +62,7 @@ const Boton = ({ children, onClick, to, variante = 'primario' } : Props) => {
             type={variante === 'primario' ? "primary" : 'default'}
             size="large"
             onClick={handleClick}
+            icon={variante === 'carrito' ? <ShoppingCartOutlined /> : undefined}
             style={estiloFinal}
         >
             {children}

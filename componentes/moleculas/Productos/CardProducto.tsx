@@ -1,6 +1,7 @@
 import { Card, Tag, Button } from "antd";
 import { ShoppingCartOutlined, WarningOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router";
+import Boton from "componentes/atomos/General/Boton";
 
 interface Producto {
     id: string;
@@ -32,7 +33,7 @@ const CardProducto = ({ producto, onClick }: Props) => {
     return (
         <Card
             hoverable
-            cover={
+            cover={ 
                 <img
                     alt={nombre}
                     src={imagen && imagen.length > 0 ? imagen[0] : "https://via.placeholder.com/250x200?text=Producto"}
@@ -64,9 +65,14 @@ const CardProducto = ({ producto, onClick }: Props) => {
                 type="primary"
                 icon={<ShoppingCartOutlined />}
                 style={{ marginTop: 10, width: "100%", borderRadius: 8 }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    console.log(`Agregar ${producto.nombre} al carrito`);
+                }}
             >
                 Agregar
             </Button>
+
         </Card>
     );
 };

@@ -8,7 +8,7 @@ import Imagen from "componentes/atomos/General/Imagen"
 
 const { Header } = Layout
 
-const LogoHuerto = 'assets/logo-huerto-hogar.png';
+import LogoHuerto from 'assets/logo-huerto-hogar.png'
 
 const BarraNavegacion = () => {
     const [open, setOpen] = useState(false)

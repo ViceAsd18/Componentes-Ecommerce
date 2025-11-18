@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import ClienteLayout from "./ClienteLayout";
-
-import { productos } from "data/productos";
+import FichaProducto from "componentes/organismo/Detalle/FichaProducto";
+import DetalleAcciones from "componentes/moleculas/Detalle/DetalleAcciones";
 
 const DetalleProducto = () => {
 
@@ -11,8 +11,10 @@ const DetalleProducto = () => {
     return (
         <ClienteLayout>
             <div>
-                <h1>Detalle Del Producto</h1>
-                <p>Producto ID: {id}</p>
+                <h1>IDProducto {id}</h1>
+            </div>
+            <div>
+                <FichaProducto/>
             </div>
         </ClienteLayout>
     )

@@ -4,7 +4,7 @@ const { Paragraph } = Typography;
 interface Props {
     children: React.ReactNode;
     style?: React.CSSProperties;
-    variante? : 'banner' | 'seccion' | 'item'
+    variante? : 'banner' | 'seccion' | 'item' | 'detalle' | 'detalleSecundario';
 }
 
 const variantes: Record<string, React.CSSProperties> = {
@@ -33,7 +33,25 @@ const variantes: Record<string, React.CSSProperties> = {
         color : '#444',
         lineHeight : '1.6em',
         marginBottom : 10,
-    }
+    },
+    
+    detalle: {
+        fontSize: "1rem",
+        color: "rgba(0,0,0,0.75)",
+        lineHeight: 1.7,
+        marginTop: 10,
+        marginBottom: 20,
+        textAlign: "left",
+        maxWidth: 600,
+    },
+
+    detalleSecundario: {
+        fontSize: "0.9rem",
+        color: "rgba(0,0,0,0.55)",
+        lineHeight: 1.5,
+        marginBottom: 10,
+        textAlign: "left",
+    },
 }
 
 const Parrafo = ({ children, style, variante = 'item' }: Props) => {
