@@ -15,11 +15,9 @@ const CantidadSelector = ({ value = 1, min = 1, max, onChange, style } : Props) 
             max={max}
             value={value}
             onChange={(v) => {
-                // AntD InputNumber puede retornar null, por defecto tiene que ser un número
-                const val = typeof v === "number" ? v : min;
-                onChange && onChange(val);
+                onChange && onChange(v as number);
             }}
-            style={{width : 100, border : 8, ...style}}
+            style={{width : 100, border : 12, ...style}}
         >
         
         </InputNumber>

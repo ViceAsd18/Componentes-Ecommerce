@@ -7,17 +7,15 @@ interface Props {
     precio : number;
     unidad? : string;
     descripcion : string;
-    etiquetas? : string[];
     style? : React.CSSProperties;
 }
 
-const InfoProducto = ({nombre, precio, unidad, descripcion, etiquetas, style} : Props) => {
+const InfoProducto = ({nombre, precio, unidad, descripcion, style} : Props) => {
     return (
-        <div style={{display : 'flex', flexDirection : 'column', gap : 20, ...style}}>
+        <div style={{display : 'flex', flexDirection : 'column', gap : 0, ...style}}>
             <Titulo variante="seccion">{nombre}</Titulo>
 
             <PrecioProducto precio={precio} unidad={unidad}/>
-
 
             <Parrafo variante='detalle'>{descripcion}</Parrafo>
 

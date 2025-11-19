@@ -1,6 +1,7 @@
 import {  Image } from "antd"
 import MiniImagen from "componentes/atomos/DetalleProducto/MiniImagen"
 import { useState } from "react"
+import Imagen from "componentes/atomos/General/Imagen"
 
 interface Props {
     imagenes : string[]
@@ -9,31 +10,28 @@ interface Props {
 const contenedorStyle : React.CSSProperties = {
     display : 'flex',
     flexDirection : 'column',
-    gap : 16,
-    maxWidth : 800,
-    height : 700,
-    overflow : 'hidden',
-
+    gap : 12,
+    minWidth : 0,
 }
 
 const imagenStyle : React.CSSProperties = {
-    display : 'flex',
-    gap : 12,
-    justifyContent : 'start',
-    overflow : 'auto',
-    //minHeight : 100,
-    height : '80%'
-}
+    width : '100%',
+    height : 'auto',
+    maxHeight : 550,
+    objectFit : 'cover',
+    borderRadius : 12    
+
+}   
 
 const contenedorMiniaturas : React.CSSProperties = {
     display : 'flex',
-    gap : 12,
-    justifyContent : 'start',
     overflow : 'auto',
-    height : '20%'
+    gap : 12,
+    minHeight : 100,
+    maxWidth : '100%',
 }
 
-const CarruselProducto = ({imagenes} : Props) => {
+const GaleriaProducto = ({imagenes} : Props) => {
     
     const [actual, setActual] = useState(0);
 
@@ -43,12 +41,14 @@ const CarruselProducto = ({imagenes} : Props) => {
 
     return (
         <div style={contenedorStyle}>
-                <Image
+                <Imagen
                     src={imagenes[actual]}
+                    alt="Imagen del producto"
                     preview={false}
                     style={imagenStyle}
                 >
-                </Image>
+
+                </Imagen>
 
 
             <div style={contenedorMiniaturas}>
@@ -56,7 +56,7 @@ const CarruselProducto = ({imagenes} : Props) => {
                     <MiniImagen
                         key={img}
                         src={img}
-                        size={100}
+                        size={85}
                         onClick={() => handleMiniClick(index)}
                         style={{
                         border:
@@ -71,4 +71,4 @@ const CarruselProducto = ({imagenes} : Props) => {
     )
 }
 
-export default CarruselProducto
+export default GaleriaProducto

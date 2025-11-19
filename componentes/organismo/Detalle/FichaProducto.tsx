@@ -1,33 +1,46 @@
-import CarruselProducto from "componentes/moleculas/Detalle/CarruselProducto.tsx"
+import GaleriaProducto from "componentes/moleculas/Detalle/GaleriaProducto"
 import InfoProducto from "componentes/moleculas/Detalle/InfoProducto"
 import DetalleAcciones from "componentes/moleculas/Detalle/DetalleAcciones"
+import TabsDetalleProducto from "componentes/moleculas/Detalle/TabsDetalleProducto"
 
+interface Producto {
+    id: string;
+    nombre: string;
+    precio: number;
+    descripcionCorta: string;
+    descripcionLarga: string;
+    imagen: string[];
+    stock: number;
+    categoria: string;
+}
 
-
-const imagenes = [
-  "https://picsum.photos/id/1015/800/800",
-  "https://picsum.photos/id/1016/800/800",
-  "https://picsum.photos/id/1018/800/800"
-];
-
-
-const FichaProducto = () => {
+interface Props {
+    producto: Producto;
+}
+    
+const FichaProducto = ({producto}: Props) => {
     return (
-        <div style={{display : 'grid', gridTemplateColumns : '55% 45%', gap : 32, alignItems : 'start'}}>
-            <CarruselProducto imagenes={imagenes}/>
+        
+       <>
+        <div style={{display : 'grid', gridTemplateColumns : "repeat(auto-fit, minmax(280px, 1fr))", gap : 32, alignItems : 'start'}}>
+            <GaleriaProducto imagenes={producto.imagen}/>
             
-            <div style={{display : 'flex', flexDirection : 'column', gap : 24}}>
+            <div style={{display : 'flex', flexDirection : 'column'}}>
                 <InfoProducto
-                    nombre="Manzana Fuji"
-                    precio={2042}
+                    nombre={producto.nombre}
+                    precio={producto.precio}
                     unidad="kg"
-                    descripcion="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, assumenda praesentium corrupti nulla unde eligendi soluta quibusdam officiis animi illum pariatur nisi magnam iste id voluptas omnis voluptatum perspiciatis repellendus iure inventore tempore ducimus, saepe excepturi? Ad doloremque rem voluptatum! Libero impedit iusto pariatur blanditiis temporibus odit possimus quis dignissimos totam quasi quod, inventore deserunt ipsum modi magni. Commodi minima voluptatum, illo nesciunt aperiam enim quidem asperiores in et quod labore. Libero quisquam officia nam exercitationem possimus! Corporis sequi quam iusto vel cumque, architecto repellat"
+                    descripcion={producto.descripcionCorta}
 
                 />
                 <DetalleAcciones />
             </div>
-
         </div>
+        <TabsDetalleProducto descripcionLarga={producto.descripcionLarga}/>
+       </>  
+
+
+        
     )
 }
 

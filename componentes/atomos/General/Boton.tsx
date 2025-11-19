@@ -5,7 +5,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 
 interface Props {
     children : React.ReactNode;
-    onClick? : () => void;
+    onClick? : (e: React.MouseEvent<HTMLButtonElement>) => void;
     to? : string;
     variante? : 'primario' | 'secundario' | 'carrito';
     style? : React.CSSProperties;
@@ -46,16 +46,16 @@ const variantes : Record<string, React.CSSProperties> = {
     }
 }
 
-const Boton = ({ children, onClick, to, variante = 'primario' } : Props) => {
+const Boton = ({ children, onClick, to, variante = 'primario', style } : Props) => {
     
     const navigate = useNavigate();
     
-    const handleClick = () => {
-        if (onClick) onClick();
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (onClick) onClick(e);
         if (to) navigate(to);
     }
 
-    const estiloFinal = {...baseStyle, ...variantes[variante]};
+    const estiloFinal = {...baseStyle, ...variantes[variante], ...style};
 
     return (
         <Button 

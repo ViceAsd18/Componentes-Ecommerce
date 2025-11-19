@@ -1,5 +1,4 @@
 import { Image } from "antd";
-import type React from "react";
 
 interface Props {
     src : string;
