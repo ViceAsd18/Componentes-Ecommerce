@@ -14,7 +14,7 @@ const PrecioProducto = ({ precio , unidad = '', style} : Props) => {
         display : 'flex',
         alignItems : 'baseline',
         gap : 8,
-        ...style
+        ...style,
     }
     
     return (

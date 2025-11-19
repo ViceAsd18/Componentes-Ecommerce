@@ -17,7 +17,7 @@ const variantes: Record<string, React.CSSProperties> = {
     },
 
     seccion : {
-        color : 'rgba(0,0,0,0.75',
+        color : 'rgba(0,0,0,0.75)',
         fontSize : '1.2rem',
         lineHeight : 1.8,
         marginTop : 20,
@@ -36,17 +36,16 @@ const variantes: Record<string, React.CSSProperties> = {
     },
     
     detalle: {
-        fontSize: "1rem",
+        fontSize: '1rem',
         color: "rgba(0,0,0,0.75)",
         lineHeight: 1.7,
         marginTop: 10,
         marginBottom: 20,
         textAlign: "left",
-        maxWidth: 600,
     },
 
     detalleSecundario: {
-        fontSize: "0.9rem",
+        fontSize: 16,
         color: "rgba(0,0,0,0.55)",
         lineHeight: 1.5,
         marginBottom: 10,

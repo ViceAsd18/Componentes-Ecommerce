@@ -28,7 +28,7 @@ const variantes : Record<string, React.CSSProperties> = {
     },
 
     seccion : {
-        padding : '100px 0',
+        padding : '75px 0',
         backgroundImage : 'none',
         justifyContent : 'center',
         gap : 60 
@@ -53,7 +53,6 @@ const contenidoStlye : React.CSSProperties = {
     display : 'flex',
     flexDirection : 'column',
     justifyContent : 'center',
-    padding : '0 24px',
 }
 
 

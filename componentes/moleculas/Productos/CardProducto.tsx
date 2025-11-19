@@ -61,17 +61,21 @@ const CardProducto = ({ producto, onClick }: Props) => {
                     </div>
                 }
             />
-            <Button
-                type="primary"
-                icon={<ShoppingCartOutlined />}
-                style={{ marginTop: 10, width: "100%", borderRadius: 8 }}
+            <Boton
+                variante="carrito" 
                 onClick={(e) => {
                     e.stopPropagation();
                     console.log(`Agregar ${producto.nombre} al carrito`);
                 }}
+                style={{
+                    background : "#1677ff",
+                    marginTop : 10,
+                    height : 35
+                }}    
             >
                 Agregar
-            </Button>
+            </Boton>
+
 
         </Card>
     );

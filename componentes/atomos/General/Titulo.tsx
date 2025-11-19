@@ -27,8 +27,9 @@ const variantes: Record<string, { level: 1 | 2 | 3 | 4 | 5; style: React.CSSProp
             fontFamily : 'Playfair Display, serif',
             fontSize : 'calc(1.5em + 1.5vw)',
             color : '#8B4513',
-            marginBottom : 40,
             fontWeight : 'bold',
+            marginTop : 0,
+            marginBottom : 0
         },
     },
 

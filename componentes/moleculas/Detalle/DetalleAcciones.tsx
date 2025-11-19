@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import CantidadSelector from "componentes/atomos/DetalleProducto/CantidadSelector";
 import Boton from "componentes/atomos/General/Boton";
-import { Typography } from "antd";
-
-const { Text } = Typography;
+import Parrafo from "componentes/atomos/General/Parrafo";
 
 interface Props {
     stock? : number
@@ -21,18 +19,19 @@ const DetalleAcciones = ({ stock = 20, onAgregar, style } : Props) => {
 
     return (
         <div style={{ display : 'flex', flexDirection : 'column', gap : 16, ...style}}>
-            <div style={{display : 'flex', alignItems : 'center', gap : 12}}>
+            
+            <Parrafo variante='detalleSecundario'>Stock: {stock} kg disponible</Parrafo>
+            <div style={{display : 'flex', alignItems : 'center', gap : 40}}>
                 <CantidadSelector
                     value={cantidad}
                     min={1}
                     max={stock}
                     onChange={(v) => setCantidad(v)}
                 />
+                <Boton onClick={handleAgregar} variante="carrito">Agregar</Boton>
 
-                <Text type="secondary">Stock: {stock}</Text>
             </div>
 
-            <Boton onClick={handleAgregar} variante="carrito">Agregar</Boton>
         </div>
     )
 
