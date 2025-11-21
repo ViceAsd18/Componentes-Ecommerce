@@ -1,20 +1,36 @@
 import CardProducto from "componentes/moleculas/Productos/CardProducto";
 import Titulo from "componentes/atomos/General/Titulo";
-import { productos } from "data/productos";
 import ContenedorSeccion from "componentes/atomos/General/ContenedorSeccion";
+import type { Producto } from "models/Producto";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface Props {
-    categoria: string;
     productoId: string;
+    categoria: number
 }
 
 const ProductosRelacionados = ({ categoria, productoId }: Props) => {
 
-    //Filtra productos de la misma categoría, excluye el actual y toma 4
-    //Combiar por el endpoint mas adelante
-    const relacionados = productos
-        .filter((p) => p.categoria === categoria && p.id !== productoId)
-        .slice(0, 4);
+    const [productos, setProductos] = useState<Producto[]>([]);
+
+    useEffect(() => {
+        const obtenerProductos = async () => {
+            try {
+                const res = await axios.get("http://localhost:3000/api/v1/productos");
+                setProductos(res.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        obtenerProductos();
+    }, []);
+
+
+    //La wea no funciona
+    const relacionados = productos.filter((p => p.categoria === categoria));
+
+
 
     return (
 

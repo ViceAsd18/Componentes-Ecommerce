@@ -4,10 +4,13 @@ import FiltrosCategorias from "componentes/moleculas/Productos/FiltrosCategorias
 import CardProducto from "componentes/moleculas/Productos/CardProducto";
 import { Pagination } from "antd";
 import { useState } from "react";
-import { productos } from "data/productos";
-import { categorias } from "data/categoria";
-
+import { categorias } from "data/categoria"; //TEMPORAL HASTA CONEXION API
+import axios from "axios";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
+
+import type { Producto } from "models/Producto";
+
 
 const CatalogoProductos = () => {
     const navigate = useNavigate();
@@ -18,22 +21,41 @@ const CatalogoProductos = () => {
     const [page, setPage] = useState(1);
     const pageSize = 8;
 
+    const [productosData, setProductos] = useState<Producto[]>([]);
+    useEffect(() => {
+        const obtenerProductos = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/api/v1/productos');
+            setProductos(response.data);
+        } catch (error) {
+            console.error("Error al obtener los productos:", error);
+        }
+    };
+    obtenerProductos();
+    }, []); 
+
+
+
+
     const handleCategoriaSeleccionada = (categoria: string | null) => {
         setCategoriaSeleccionada(categoria);
         setPage(1);
     };
 
-    //Filtrar por categoría
+    /*
     const filtradosPorCategoria = categoriaSeleccionada
-        ? productos.filter(p => p.categoria === categoriaSeleccionada)
-        : productos;
+        ? productosData.filter(p => p.categoria === Number(categoriaSeleccionada))
+        : productosData;
 
     //Filtrar por búsqueda
     const filtradosPorBusqueda = filtradosPorCategoria.filter(p =>
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
+    */
 
-    //Ordenar - Cambiar por la conexion con un Api mas adelante
+
+
+    /*
     const productosOrdenados = [...filtradosPorBusqueda].sort((a, b) => {
         switch (orden) {
             case "az":
@@ -48,10 +70,11 @@ const CatalogoProductos = () => {
                 return 0;
         }
     });
+    */
 
     //Paginación
     const startIndex = (page - 1) * pageSize;
-    const productosPagina = productosOrdenados.slice(startIndex, startIndex + pageSize);
+    const productosPagina = productosData.slice(startIndex, startIndex + pageSize);
 
     return (
         <div style={{ width: "100%", maxWidth: 1200, margin: "0 auto", padding: "0px 20px" }}>
@@ -72,12 +95,15 @@ const CatalogoProductos = () => {
                 onCategoriaSeleccionada={handleCategoriaSeleccionada}
             />
 
+
+
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
                 {productosPagina.map((producto) => (
                     <CardProducto
                         key={producto.id}
                         producto={producto}
                         onClick={() => navigate(`/detalle_producto/${producto.id}`)}
+                        imagenes={["1.jpg", "2.jpg", "3.jpg"]} 
 
                     />
                 ))}
@@ -86,7 +112,7 @@ const CatalogoProductos = () => {
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: 30 }}>
                 <Pagination
                     current={page}
-                    total={productosOrdenados.length}
+                    total={productosData.length}
                     pageSize={pageSize}
                     onChange={(p) => setPage(p)}
                     showSizeChanger={false}

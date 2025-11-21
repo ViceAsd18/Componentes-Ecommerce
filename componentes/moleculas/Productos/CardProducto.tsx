@@ -1,26 +1,21 @@
-import { Card, Tag, Button } from "antd";
-import { ShoppingCartOutlined, WarningOutlined } from "@ant-design/icons";
+import { Card } from "antd";
 import { useNavigate } from "react-router";
 import Boton from "componentes/atomos/General/Boton";
 
-interface Producto {
-    id: string;
-    nombre: string;
-    precio: number;
-    stock: number;
-    stockCritico?: number;
-    imagen?: string[];
-}
+
+
+
+import type { Producto } from 'models/Producto';
 
 interface Props {
     producto: Producto;
     onClick?: (producto: Producto) => void;
+    imagenes? : string[];
 }
 
 
-
 const CardProducto = ({ producto, onClick }: Props) => {
-    const { nombre, precio, stock, imagen } = producto;
+    const { nombre, precio, stock} = producto;
 
     const navigate = useNavigate();
 
@@ -29,6 +24,9 @@ const CardProducto = ({ producto, onClick }: Props) => {
         navigate(`/detalle_producto/${producto.id}`);
     };
 
+    const baseUrlImagen = "/assets/img/productos/";
+    const img1 = baseUrlImagen + producto.nombre.toLowerCase().replace(/\s+/g, '-') + "/" + '1.jpg';
+
 
     return (
         <Card
@@ -36,7 +34,7 @@ const CardProducto = ({ producto, onClick }: Props) => {
             cover={ 
                 <img
                     alt={nombre}
-                    src={imagen && imagen.length > 0 ? imagen[0] : "https://via.placeholder.com/250x200?text=Producto"}
+                    src={img1}
                     style={{ objectFit: "cover", height: 200, borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
                     onClick={handleClick}
                 />
@@ -54,7 +52,10 @@ const CardProducto = ({ producto, onClick }: Props) => {
                 title={nombre}
                 description={
                     <div style={{ marginTop: 8 }}>
-                        <p style={{ margin: 0, fontWeight: 600 }}>Precio: ${precio.toFixed(2)}</p>
+                        <p style={{ margin: 0, fontWeight: 600 }}>
+                            Precio: ${Number(precio).toFixed(2)}
+                        </p>
+
                         <p style={{ margin: 0 }}>
                             Stock: {stock}{" "}
                         </p>
