@@ -3,12 +3,13 @@ import { Layout, Row, Col } from "antd"
 
 import ButtonGrupoLinks from "componentes/moleculas/BarraNavegacion/BotonGrupoLinks"
 import CarritoIcono from "componentes/atomos/BarraNavegacion/CarritoIcono"
-import BtnHamburguesa from "componentes/atomos/BarraNavegacion/BtnHamburguesa"
+import UsuarioIcono from "componentes/atomos/BarraNavegacion/UsuarioIcono"
+import PedidosIcono from "componentes/atomos/BarraNavegacion/PedidosIcono"
+
 import Imagen from "componentes/atomos/General/Imagen"
+import LogoHuerto from 'assets/logo-huerto-hogar.png'
 
 const { Header } = Layout
-
-import LogoHuerto from 'assets/logo-huerto-hogar.png'
 
 const BarraNavegacion = () => {
     const [open, setOpen] = useState(false)
@@ -28,7 +29,7 @@ const BarraNavegacion = () => {
         >
             <Row align="middle" justify="space-between" wrap={false}>
                 <Col flex="none">
-                    <Imagen src={LogoHuerto} alt="Logo Huerto Hogar" style={{ width: 120, height: 'auto' }} preview={true}/>
+                    <Imagen src={LogoHuerto} alt="Logo Huerto Hogar" style={{ width: 120, height: 'auto' }} preview={false}/>
                 </Col>
 
                 <Col flex="auto" style={{ textAlign: "center" }}>
@@ -37,7 +38,9 @@ const BarraNavegacion = () => {
                     </div>
                 </Col>
 
-                <Col flex="none" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <Col flex="none" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <PedidosIcono />
+                    <UsuarioIcono />
                     <CarritoIcono />
                 </Col>
             </Row>
